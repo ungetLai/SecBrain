@@ -33,18 +33,6 @@ POSTGRES_CONNECTION_STRING="postgresql://<使用者名稱>:<密碼>@<主機位�
 # 如果您的 Zeabur PostgreSQL 服務已經啟動，它應該會自動注入此變數
 ```
 
-### 在 Zeabur Terminal 建立資料表 (若尚未建立 Table)
-
-如果您已經成功部署專案，但在首頁送出資料時遇到錯誤，且在 PostgreSQL 資料庫內沒看到 `Note` 這張表，這代表資料庫尚未套用 Prisma 的結構。
-
-請在 Zeabur 控制台點選您的「Web 服務」 -> 進入「終端機 (Terminal)」分頁，執行以下指令：
-
-```bash
-npx prisma db push
-```
-
-執行成功後，您的 PostgreSQL 就會出現 `Note` 資料表，此時再回到 Dashboard 首頁送出資料，應該就能成功寫入了！
-
 ### 安裝依賴與啟動
 
 ```bash

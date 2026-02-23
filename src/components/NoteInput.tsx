@@ -2,7 +2,11 @@
 
 import { useState } from 'react';
 
-export default function NoteInput() {
+interface NoteInputProps {
+    onNoteAdded?: () => void;
+}
+
+export default function NoteInput({ onNoteAdded }: NoteInputProps) {
     const [content, setContent] = useState('');
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [statusMessage, setStatusMessage] = useState<{ type: 'success' | 'error', text: string } | null>(null);
@@ -25,6 +29,11 @@ export default function NoteInput() {
 
             setContent('');
             setStatusMessage({ type: 'success', text: 'Note successfully added to Backlog!' });
+
+            // Trigger the refresh callback if provided
+            if (onNoteAdded) {
+                onNoteAdded();
+            }
             // eslint-disable-next-line @typescript-eslint/no-unused-vars
         } catch (error) {
             setStatusMessage({ type: 'error', text: 'An error occurred while adding the note.' });

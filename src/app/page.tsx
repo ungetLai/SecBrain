@@ -1,6 +1,14 @@
+import { useState } from 'react';
 import NoteInput from '@/components/NoteInput';
+import NoteList from '@/components/NoteList';
 
 export default function Home() {
+  const [refreshTrigger, setRefreshTrigger] = useState(0);
+
+  const handleNoteAdded = () => {
+    setRefreshTrigger(prev => prev + 1);
+  };
+
   return (
     <div className="min-h-screen bg-[#0A0A0A] text-gray-200 font-sans selection:bg-cyan-500/30">
       {/* Dynamic Background Effects */}
@@ -9,10 +17,10 @@ export default function Home() {
         <div className="absolute bottom-[-20%] right-[-10%] w-[60%] h-[60%] bg-cyan-600/10 blur-[150px] rounded-full mix-blend-screen opacity-50"></div>
       </div>
 
-      <main className="relative z-10 flex flex-col items-center justify-center min-h-[100dvh] p-8 pb-20 gap-16 sm:p-20">
+      <main className="relative z-10 flex flex-col items-center justify-center min-h-[100dvh] p-8 pb-32 gap-12 sm:p-20">
 
         {/* Header Section */}
-        <header className="flex flex-col items-center text-center max-w-3xl space-y-6">
+        <header className="flex flex-col items-center text-center max-w-3xl space-y-6 mt-10">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-sm font-medium text-cyan-400 mb-2 backdrop-blur-sm">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
@@ -29,11 +37,20 @@ export default function Home() {
           </p>
         </header>
 
-        {/* Input Interface */}
-        <div className="w-full relative group">
-          <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-1000 group-hover:duration-200"></div>
-          <NoteInput />
+        {/* Content Wrapper */}
+        <div className="w-full max-w-2xl flex flex-col gap-8">
+          {/* Input Interface */}
+          <div className="w-full relative group">
+            <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-1000 group-hover:duration-200"></div>
+            <NoteInput onNoteAdded={handleNoteAdded} />
+          </div>
+
+          {/* List Interface */}
+          <div className="w-full">
+            <NoteList refreshTrigger={refreshTrigger} />
+          </div>
         </div>
+
       </main>
     </div>
   );

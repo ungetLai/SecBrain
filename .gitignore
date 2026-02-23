@@ -45,3 +45,4 @@ next-env.d.ts
 ANTIGRAVITY_GUIDELINES.md
 *_error.log
 *_error.txt
+build*.log

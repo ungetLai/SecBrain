@@ -67,6 +67,7 @@ enum NoteStatus {
   Backlog
   Failed
   Done
+  Archive
 }
 ```
 

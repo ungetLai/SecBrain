@@ -16,6 +16,7 @@ enum NoteStatus {
   Backlog
   Failed
   Done
+  Archive
 }
 
 model Note {

@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import NoteInput from '@/components/NoteInput';
 import NoteList from '@/components/NoteList';

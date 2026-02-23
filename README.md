@@ -26,10 +26,11 @@
 
 ### 環境變數設定
 
-請在專案根目錄建立 `.env` 檔案，並設定您的 PostgreSQL 連線字串 (可從 Zeabur 取得)：
+請在 Zeabur 的環境變數設定中，或是本地的 `.env` 檔案中加入：
 
 ```env
-DATABASE_URL="postgresql://<使用者名稱>:<密碼>@<主機位置>:<連接埠>/<資料庫名稱>?schema=public"
+POSTGRES_CONNECTION_STRING="postgresql://<使用者名稱>:<密碼>@<主機位置>:<連接埠>/<資料庫名稱>?schema=public"
+# 如果您的 Zeabur PostgreSQL 服務已經啟動，它應該會自動注入此變數
 ```
 
 ### 安裝依賴與啟動
